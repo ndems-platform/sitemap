@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>NDEMS Report | ระบบรายงานการแพทย์ฉุกเฉิน</title>
+  <meta name="description"
+    content="NDEMS Report — ศูนย์รวมลิงก์ระบบรายงานการแพทย์ฉุกเฉินแห่งชาติ สถาบันการแพทย์ฉุกเฉินแห่งชาติ (สพฉ.)" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231d4ed8'/%3E%3Crect x='13' y='10' width='38' height='44' rx='4' fill='%23ffffff'/%3E%3Crect x='13' y='10' width='38' height='44' rx='4' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Crect x='19' y='36' width='7' height='12' rx='2' fill='%231d4ed8'/%3E%3Crect x='29' y='28' width='7' height='20' rx='2' fill='%232563eb'/%3E%3Crect x='39' y='20' width='7' height='28' rx='2' fill='%23fbbf24'/%3E%3Crect x='19' y='50' width='27' height='2' rx='1' fill='%2393c5fd'/%3E%3Crect x='19' y='18' width='18' height='2.5' rx='1.2' fill='%23bfdbfe'/%3E%3Crect x='19' y='23' width='12' height='2.5' rx='1.2' fill='%23bfdbfe'/%3E%3C/svg%3E"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #1d4ed8;
+      --blue-dk: #1e3a8a;
+      --blue-lt: #3b82f6;
+      --blue-pale: #eff6ff;
+      --yellow: #fbbf24;
+      --white: #ffffff;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --text: #0f172a;
+      --sub: #64748b;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Sarabun', 'Inter', sans-serif;
+      background: var(--gray-50);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #2563eb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+      top: -180px;
+      right: -60px;
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 36px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo-wrap {
+      flex-shrink: 0;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(251, 191, 36, 0.45);
+      padding: 5px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-body {}
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(251, 191, 36, 0.18);
+      border: 1px solid rgba(251, 191, 36, 0.38);
+      border-radius: 100px;
+      padding: 3px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #fde68a;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fbbf24;
+      box-shadow: 0 0 6px #fbbf24;
+      animation: blink 1.8s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    h1 {
+      font-size: clamp(19px, 2.8vw, 26px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    h1 span {
+      color: #fde68a;
+    }
+
+    .hero-sub {
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.58);
+    }
+
+    /* ── STICKY NAV ── */
+    .topnav {
+      background: #fff;
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .topnav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .topnav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .ntab {
+      padding: 13px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--sub);
+      text-decoration: none;
+      border-bottom: 2.5px solid transparent;
+      white-space: nowrap;
+      transition: all .18s;
+      cursor: pointer;
+    }
+
+    .ntab:hover {
+      color: var(--blue);
+    }
+
+    .ntab.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    /* ── SECTION ── */
+    .sec {
+      margin-bottom: 40px;
+      scroll-margin-top: 54px;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .sec-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .si-b {
+      background: #dbeafe;
+    }
+
+    .si-g {
+      background: #dcfce7;
+    }
+
+    .si-p {
+      background: #f3e8ff;
+    }
+
+    .sec-meta {}
+
+    .sec-num {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    /* ── LIST ── */
+    .list {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 18px;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid var(--gray-100);
+      transition: all .18s;
+      position: relative;
+    }
+
+    .list-item:last-child {
+      border-bottom: none;
+    }
+
+    .list-item:hover {
+      background: var(--blue-pale);
+    }
+
+    .list-item:hover .item-arrow {
+      color: var(--blue);
+      transform: translate(2px, -2px);
+    }
+
+    .list-item:hover .item-num {
+      background: linear-gradient(135deg, var(--blue-dk), var(--blue));
+    }
+
+    .item-num {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 8px rgba(37, 99, 235, .25);
+      transition: background .18s;
+    }
+
+    .item-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 2px;
+    }
+
+    .item-src {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--gray-400);
+      font-family: 'Inter', monospace;
+    }
+
+    .item-src::before {
+      content: '🔗';
+      font-size: 9px;
+    }
+
+    .item-arrow {
+      color: var(--gray-300);
+      font-size: 15px;
+      flex-shrink: 0;
+      transition: all .18s;
+    }
+
+    /* disabled */
+    .list-item.disabled {
+      cursor: default;
+      opacity: .5;
+    }
+
+    .list-item.disabled:hover {
+      background: transparent;
+    }
+
+    .list-item.disabled:hover .item-arrow {
+      transform: none;
+      color: var(--gray-300);
+    }
+
+    .list-item.disabled .item-num {
+      background: var(--gray-200);
+      color: var(--gray-400);
+      box-shadow: none;
+    }
+
+    .tag-soon {
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      background: #fff7ed;
+      color: #ea580c;
+      border: 1px solid #fed7aa;
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-800);
+      color: rgba(255, 255, 255, .45);
+      text-align: center;
+      padding: 22px;
+      font-size: 12.5px;
+    }
+
+    footer strong {
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .logo-wrap {
+        width: 72px;
+        height: 72px;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="hero">
+      <div class="logo-wrap">
+        <img src="logo-200.png" alt="สพฉ." />
+      </div>
+      <div class="hero-body">
+        <div class="eyebrow"><span class="dot"></span>NDEMS Report</div>
+        <h1>ระบบรายงาน<span>การแพทย์ฉุกเฉินแห่งชาติ</span></h1>
+        <p class="hero-sub">สถาบันการแพทย์ฉุกเฉินแห่งชาติ (สพฉ.) · National Institute for Emergency Medicine</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <a class="ntab active" href="#s1">🗺️ ทรัพยากรการแพทย์ฉุกเฉิน</a>
+      <a class="ntab" href="#s2">📊 ผลการให้บริการ</a>
+      <a class="ntab" href="#s3">📋 ผลการดำเนินงาน</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- SECTION 1 -->
+    <section class="sec" id="s1">
+      <div class="sec-head">
+        <div class="sec-icon si-b">🗺️</div>
+        <div class="sec-meta">
+          <div class="sec-num">Section 01</div>
+          <h2>รายงานข้อมูลทรัพยากรการแพทย์ฉุกเฉิน</h2>
+        </div>
+      </div>
+      <div class="list">
+
+        <a class="list-item" id="link-1-1" href="https://ndems-platform.github.io/dashboard-command-center/"
+          target="_blank" rel="noopener">
+          <div class="item-num">1.1</div>
+          <div class="item-body">
+            <div class="item-title">รายงานข้อมูลหน่วยปฏิบัติการอำนวยการของประเทศ</div>
+            <span class="item-src">ndems-platform.github.io</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-1-2"
+          href="https://datastudio.google.com/reporting/451b98b7-25ef-4f15-aee1-bfa1711af9cf" target="_blank"
+          rel="noopener">
+          <div class="item-num">1.2</div>
+          <div class="item-body">
+            <div class="item-title">รายงานข้อมูลหน่วยปฏิบัติการแพทย์ของประเทศ</div>
+            <span class="item-src">datastudio.google.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-1-3"
+          href="https://reports-idems.fm-sp.com/public/dashboards/BMlIleebVSB3EfCcmW5VurQiT1jvP6QIKMXd8yMU?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">1.3</div>
+          <div class="item-body">
+            <div class="item-title">รายงานข้อมูลทรัพยากรการแพทย์ฉุกเฉินของประเทศ</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="sec" id="s2">
+      <div class="sec-head">
+        <div class="sec-icon si-g">📊</div>
+        <div class="sec-meta">
+          <div class="sec-num">Section 02</div>
+          <h2>รายงานผลการให้บริการการแพทย์ฉุกเฉิน</h2>
+        </div>
+      </div>
+      <div class="list">
+
+        <a class="list-item" id="link-2-1"
+          href="https://reports-idems.fm-sp.com/public/dashboards/AOeuUEzYZkseumGeMx8uxgLBG2g8FPzDqtzUQA0x?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.1</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายจังหวัด</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-2-2"
+          href="https://reports-idems.fm-sp.com/public/dashboards/0GX3Vtjl7farswXSoxXOWkN6NmXuvhcTu0kre8HW?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.2</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายอำเภอ</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-2-3"
+          href="https://reports-idems.fm-sp.com/public/dashboards/sje5PSg1ElGYPWdrrUauqXNX1H3mZHIdSVrA3Tmy?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.3</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายตำบล</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-2-4"
+          href="https://reports-idems.fm-sp.com/public/dashboards/4WbcD0RaOpvR9lqoyWnGLKOuGGS4CY18be44FmRc?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.4</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน จำแนกรายหน่วยปฏิบัติการ</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-2-5"
+          href="https://reports-idems.fm-sp.com/public/dashboards/dnj2gdnszZDOMTONa2ZnlJjAwbQjpK5QfotzcmdY?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.5</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉินอุบัติเหตุทางถนนช่วงเทศกาล</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-2-6"
+          href="https://reports-idems.fm-sp.com/public/dashboards/jERu1iINRSj6jSWkZNTvqEKROMdBHndPY7xPjJtg?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.6</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการปฏิบัติการการแพทย์ฉุกเฉิน ช่วงสถานการณ์ชายแดนไทย-กัมพูชา</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-2-7"
+          href="https://reports-idems.fm-sp.com/public/dashboards/C2nS91V6ldgIaGM9Gjjcsj3LLWu9350kgfQP9ViP?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.7</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการใช้งานฟังก์ชัน SMS เพื่อขอพิกัด และ Video Call</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a class="list-item" id="link-2-8"
+          href="https://reports-idems.fm-sp.com/public/dashboards/GCgHfJX3R1idb9W4X2FjczSRDFXCEex1gnseIJH1?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.8</div>
+          <div class="item-body">
+            <div class="item-title">รายงานการเข้าถึงบริการของผู้ป่วยอุบัติเหตุทางถนน (RTI)</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="sec" id="s3">
+      <div class="sec-head">
+        <div class="sec-icon si-p">📋</div>
+        <div class="sec-meta">
+          <div class="sec-num">Section 03</div>
+          <h2>รายงานผลการดำเนินงานด้านการแพทย์ฉุกเฉิน</h2>
+        </div>
+      </div>
+      <div class="list">
+
+        <div class="list-item disabled" id="link-3-1">
+          <div class="item-num">3.1</div>
+          <div class="item-body">
+            <div class="item-title">รายงานผลการดำเนินงานตามตัวชี้วัดการแพทย์ฉุกเฉิน</div>
+          </div>
+          <span class="tag-soon">Coming Soon</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2568 <strong>สถาบันการแพทย์ฉุกเฉินแห่งชาติ (สพฉ.)</strong> · National Institute for Emergency Medicine</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.sec');
+    const tabs = document.querySelectorAll('.ntab');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          tabs.forEach(t => t.classList.remove('active'));
+          const t = document.querySelector(`.ntab[href="#${e.target.id}"]`);
+          if (t) t.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => io.observe(s));
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const el = document.querySelector(tab.getAttribute('href'));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>
