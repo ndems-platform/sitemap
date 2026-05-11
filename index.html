@@ -166,189 +166,24 @@
       padding: 36px 24px 80px;
     }
 
-    .main-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 60px;
+    /* ── PAGE HEADER ── */
+    .page-header {
+      margin-bottom: 32px;
+      padding: 18px 24px;
+      background: #ecfdf5;
+      border-left: 4px solid #34d399;
+      border-radius: 8px;
     }
-
-    @media (max-width: 768px) {
-      .main-cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── PORTAL CARD ── */
-    .portal-card {
-      --theme: var(--blue);
-      --theme-dk: var(--blue-dk);
-      --theme-lt: var(--blue-lt);
-      --theme-pale: var(--blue-pale);
-
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(135deg, #ffffff, var(--theme-pale));
-      border: 2px solid var(--theme-lt);
-      border-radius: 16px;
-      padding: 32px;
-      text-decoration: none;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      height: 100%;
-    }
-
-    .portal-card.theme-green {
-      --theme: #059669;
-      --theme-dk: #064e3b;
-      --theme-lt: #34d399;
-      --theme-pale: #ecfdf5;
-    }
-
-    .portal-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-      border-color: var(--theme);
-    }
-
-    .portal-card::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, var(--theme) 0%, transparent 70%);
-      opacity: 0.15;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .pc-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--theme-dk), var(--theme));
-      color: #fff;
-      font-size: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    .pc-title {
-      font-size: 20px;
+    .page-header h2 {
+      font-size: 19px;
       font-weight: 800;
-      color: var(--theme-dk);
+      color: #064e3b;
       line-height: 1.4;
-      margin-bottom: 8px;
     }
-
-    .pc-desc {
-      font-size: 14.5px;
-      color: var(--gray-600);
-      line-height: 1.5;
-      margin-bottom: 24px;
-      flex: 1;
-    }
-
-    .pc-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--theme);
-      background: #fff;
-      padding: 10px 20px;
-      border-radius: 100px;
-      border: 1px solid var(--theme-lt);
-      width: fit-content;
-      transition: all 0.2s;
-    }
-
-    .portal-card:hover .pc-link {
-      background: var(--theme);
-      color: #fff;
-    }
-
-    .pc-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .pc-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .pc-btn-primary {
-      background: var(--theme);
-      color: #fff;
-      border: 1px solid var(--theme);
-      box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);
-    }
-    
-    .pc-btn-primary:hover {
-      background: var(--theme-dk);
-      border-color: var(--theme-dk);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(29, 78, 216, 0.3);
-    }
-
-    .pc-btn-outline {
-      background: #fff;
-      color: var(--theme);
-      border: 1px solid var(--theme-lt);
-    }
-
-    .pc-btn-outline:hover {
-      background: var(--theme-pale);
-      border-color: var(--theme);
-      transform: translateY(-2px);
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 56px 0 32px;
-    }
-
-    .divider:first-child {
-      margin-top: 8px;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--gray-300);
-    }
-
-    .divider span {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--gray-700);
-      letter-spacing: 0.5px;
-      background: var(--gray-200);
-      padding: 6px 18px;
-      border-radius: 100px;
+    .page-header h2 span {
+      font-size: 15px;
+      font-weight: 600;
+      color: #059669;
     }
 
     /* ── SECTION ── */
@@ -405,144 +240,121 @@
       color: var(--text);
     }
 
-    /* ── REPORT GRID ── */
-    .report-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 24px;
-    }
-
-    .report-item {
-      display: flex;
-      flex-direction: column;
+    /* ── LIST (GREEN THEME) ── */
+    .list {
       background: #fff;
       border: 1px solid var(--gray-200);
-      border-radius: 16px;
-      padding: 24px;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-      position: relative;
+      border-radius: 14px;
       overflow: hidden;
-      z-index: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     }
 
-    .ri-bg-icon {
-      position: absolute;
-      bottom: -15px;
-      right: -15px;
-      font-size: 110px;
-      opacity: 0.03;
-      transform: rotate(-15deg) scale(0.8);
-      transition: all 0.4s ease;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .report-item:hover .ri-bg-icon {
-      opacity: 0.08;
-      transform: rotate(0deg) scale(1);
-    }
-
-    /* Data Warehouse Theme (Green) */
-    .sec-1 .report-item, .sec-2 .report-item { border-top: 4px solid #34d399; }
-    .sec-1 .report-item:hover, .sec-2 .report-item:hover { border-color: #059669; background: #ecfdf5; box-shadow: 0 12px 24px rgba(16, 185, 129, 0.12); transform: translateY(-4px); }
-    .sec-1 .ri-icon, .sec-2 .ri-icon { background: #d1fae5; color: #064e3b; }
-    .sec-1 .ri-badge, .sec-2 .ri-badge { background: #a7f3d0; color: #064e3b; }
-
-    .ri-top {
+    .list-item {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 16px;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid var(--gray-100);
+      transition: all .2s;
     }
 
-    .ri-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+    .list-item:last-child {
+      border-bottom: none;
+    }
+
+    .list-item:hover {
+      background: #ecfdf5;
+    }
+
+    .list-item:hover .item-arrow {
+      color: #059669;
+      transform: translate(2px, -2px);
+    }
+
+    .list-item:hover .item-num {
+      background: linear-gradient(135deg, #064e3b, #059669);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+    }
+
+    .item-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #d1fae5;
+      color: #064e3b;
+      font-size: 14px;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: all .2s;
     }
 
-    .ri-badge {
-      font-size: 14.5px;
-      font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 100px;
-      letter-spacing: 0.5px;
+    .item-body {
+      flex: 1;
+      min-width: 0;
     }
 
-    .ri-title {
-      font-size: 17px;
-      font-weight: 700;
+    .item-title {
+      font-size: 16px;
+      font-weight: 600;
       color: var(--text);
-      line-height: 1.45;
-      margin-bottom: auto;
-      transition: color 0.3s;
+      line-height: 1.4;
+      margin-bottom: 2px;
+      transition: color .2s;
     }
 
-    .sec-1 .report-item:hover .ri-title, .sec-2 .report-item:hover .ri-title { color: #064e3b; }
+    .list-item:hover .item-title {
+      color: #064e3b;
+    }
 
-    .ri-bot {
-      margin-top: 24px;
-      display: flex;
+    .item-src {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 6px;
       font-size: 12.5px;
       color: var(--gray-500);
       font-family: 'Inter', monospace;
     }
 
-    .ri-arrow {
-      color: var(--gray-400);
-      font-size: 14px;
-      transition: all 0.3s;
-      background: var(--gray-100);
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .item-src::before {
+      content: '🔗';
+      font-size: 10px;
     }
 
-    .report-item:hover .ri-arrow {
-      background: var(--white);
-      transform: translate(3px, -3px) scale(1.1);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    .item-arrow {
+      color: var(--gray-300);
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: all .2s;
     }
-    .sec-1 .report-item:hover .ri-arrow, .sec-2 .report-item:hover .ri-arrow { color: #059669; }
 
     /* disabled */
-    .report-item.disabled {
+    .list-item.disabled {
       cursor: default;
       opacity: 0.6;
     }
 
-    .report-item.disabled:hover {
-      transform: none;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-      border-color: var(--gray-200);
+    .list-item.disabled:hover {
+      background: transparent;
     }
 
-    .report-item.disabled:hover .ri-arrow {
+    .list-item.disabled:hover .item-arrow {
       transform: none;
       color: var(--gray-300);
     }
 
-    .report-item.disabled:hover .ri-num {
-      background: var(--gray-200);
-      color: var(--gray-500);
-      box-shadow: none;
+    .list-item.disabled:hover .item-title {
+      color: var(--text);
     }
 
-    .report-item.disabled:hover .ri-bot::before {
-      background: var(--gray-300);
+    .list-item.disabled .item-num {
+      background: var(--gray-200);
+      color: var(--gray-500);
       box-shadow: none;
     }
 
@@ -613,36 +425,9 @@
   <!-- MAIN -->
   <main>
 
-    <div class="main-cards">
-      <!-- PORTAL CARD -->
-      <div class="portal-card">
-        <div class="pc-icon">💻</div>
-        <div class="pc-title">ดิจิทัลแพลตฟอร์มกลางการแพทย์ฉุกเฉิน<br>(NDEMS Portal)</div>
-        <div class="pc-desc">ระบบสารสนเทศและบริการดิจิทัลหลัก เข้าถึงข้อมูล บริหารจัดการ และปฏิบัติการได้ในที่เดียว</div>
-        <div class="pc-actions">
-          <a href="https://emsportal-idems.niems.go.th" target="_blank" rel="noopener" class="pc-btn pc-btn-primary">
-            เข้าสู่ระบบ <span style="font-size: 16px;">→</span>
-          </a>
-          <a href="https://drive.google.com/file/d/1ynOASyZu7DxLbJm4o6aHUVn6Nd__Grgk/view?usp=drive_link" target="_blank" rel="noopener" class="pc-btn pc-btn-outline">
-            📖 คู่มือการใช้งาน
-          </a>
-        </div>
-      </div>
-
-      <!-- REPORTS CARD -->
-      <a href="#reports-list" class="portal-card theme-green">
-        <div class="pc-icon">📊</div>
-        <div class="pc-title">ระบบคลังข้อมูลการแพทย์ฉุกเฉิน<br>(NDEMS Reports)</div>
-        <div class="pc-desc">เข้าถึงข้อมูลทรัพยากรการแพทย์ฉุกเฉิน และสถิติผลการให้บริการการแพทย์ฉุกเฉินระดับประเทศ</div>
-        <div class="pc-link">ดูรายการระบบรายงาน <span>↓</span></div>
-      </a>
-    </div>
-
-    <div class="divider" id="reports-list">
-      <span>📋 ระบบคลังข้อมูลการแพทย์ฉุกเฉิน (NDEMS Reports)</span>
-    </div>
-
-    <!-- SECTION 1 -->
+    <div class="page-header">
+      <h2>📊 ระบบรายงานการให้บริการการแพทย์ฉุกเฉิน<br><span>(NDEMS Reports)</span></h2>
+    </div>    <!-- SECTION 1 -->
     <section class="sec sec-1" id="s1">
       <div class="sec-head">
         <div class="sec-icon si-g">🗺️</div>
@@ -651,45 +436,38 @@
           <h2>รายงานข้อมูลทรัพยากรการแพทย์ฉุกเฉิน</h2>
         </div>
       </div>
-      <div class="report-grid">
+      <div class="list">
 
-        <a class="report-item" id="link-1-1" href="https://ndems-platform.github.io/dashboard-command-center/" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🏢</div>
-          <div class="ri-top">
-            <div class="ri-icon">🏢</div>
-            <div class="ri-badge">1.1</div>
+        <a class="list-item" id="link-1-1" href="https://ndems-platform.github.io/dashboard-command-center/"
+          target="_blank" rel="noopener">
+          <div class="item-num">1.1</div>
+          <div class="item-body">
+            <div class="item-title">รายงานข้อมูลหน่วยปฏิบัติการอำนวยการของประเทศ</div>
+            <span class="item-src">ndems-platform.github.io</span>
           </div>
-          <div class="ri-title">รายงานข้อมูลหน่วยปฏิบัติการอำนวยการของประเทศ</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            ndems-platform.github.io
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-1-2" href="https://datastudio.google.com/reporting/451b98b7-25ef-4f15-aee1-bfa1711af9cf" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🚑</div>
-          <div class="ri-top">
-            <div class="ri-icon">🚑</div>
-            <div class="ri-badge">1.2</div>
+        <a class="list-item" id="link-1-2"
+          href="https://datastudio.google.com/reporting/451b98b7-25ef-4f15-aee1-bfa1711af9cf" target="_blank"
+          rel="noopener">
+          <div class="item-num">1.2</div>
+          <div class="item-body">
+            <div class="item-title">รายงานข้อมูลหน่วยปฏิบัติการแพทย์ของประเทศ</div>
+            <span class="item-src">datastudio.google.com</span>
           </div>
-          <div class="ri-title">รายงานข้อมูลหน่วยปฏิบัติการแพทย์ของประเทศ</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            datastudio.google.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-1-3" href="https://reports-idems.fm-sp.com/public/dashboards/BMlIleebVSB3EfCcmW5VurQiT1jvP6QIKMXd8yMU?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🧰</div>
-          <div class="ri-top">
-            <div class="ri-icon">🧰</div>
-            <div class="ri-badge">1.3</div>
+        <a class="list-item" id="link-1-3"
+          href="https://reports-idems.fm-sp.com/public/dashboards/BMlIleebVSB3EfCcmW5VurQiT1jvP6QIKMXd8yMU?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">1.3</div>
+          <div class="item-body">
+            <div class="item-title">รายงานข้อมูลทรัพยากรการแพทย์ฉุกเฉินของประเทศ</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">รายงานข้อมูลทรัพยากรการแพทย์ฉุกเฉินของประเทศ</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
       </div>
@@ -704,110 +482,94 @@
           <h2>รายงานผลการให้บริการการแพทย์ฉุกเฉิน</h2>
         </div>
       </div>
-      <div class="report-grid">
+      <div class="list">
 
-        <a class="report-item" id="link-2-1" href="https://reports-idems.fm-sp.com/public/dashboards/AOeuUEzYZkseumGeMx8uxgLBG2g8FPzDqtzUQA0x?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🗺️</div>
-          <div class="ri-top">
-            <div class="ri-icon">🗺️</div>
-            <div class="ri-badge">2.1</div>
+        <a class="list-item" id="link-2-1"
+          href="https://reports-idems.fm-sp.com/public/dashboards/AOeuUEzYZkseumGeMx8uxgLBG2g8FPzDqtzUQA0x?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.1</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายจังหวัด</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายจังหวัด</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-2-2" href="https://reports-idems.fm-sp.com/public/dashboards/0GX3Vtjl7farswXSoxXOWkN6NmXuvhcTu0kre8HW?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">📍</div>
-          <div class="ri-top">
-            <div class="ri-icon">📍</div>
-            <div class="ri-badge">2.2</div>
+        <a class="list-item" id="link-2-2"
+          href="https://reports-idems.fm-sp.com/public/dashboards/0GX3Vtjl7farswXSoxXOWkN6NmXuvhcTu0kre8HW?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.2</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายอำเภอ</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายอำเภอ</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-2-3" href="https://reports-idems.fm-sp.com/public/dashboards/sje5PSg1ElGYPWdrrUauqXNX1H3mZHIdSVrA3Tmy?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🏘️</div>
-          <div class="ri-top">
-            <div class="ri-icon">🏘️</div>
-            <div class="ri-badge">2.3</div>
+        <a class="list-item" id="link-2-3"
+          href="https://reports-idems.fm-sp.com/public/dashboards/sje5PSg1ElGYPWdrrUauqXNX1H3mZHIdSVrA3Tmy?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.3</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายตำบล</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">สถิติการให้บริการการแพทย์ฉุกเฉิน รายตำบล</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-2-4" href="https://reports-idems.fm-sp.com/public/dashboards/4WbcD0RaOpvR9lqoyWnGLKOuGGS4CY18be44FmRc?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🏥</div>
-          <div class="ri-top">
-            <div class="ri-icon">🏥</div>
-            <div class="ri-badge">2.4</div>
+        <a class="list-item" id="link-2-4"
+          href="https://reports-idems.fm-sp.com/public/dashboards/4WbcD0RaOpvR9lqoyWnGLKOuGGS4CY18be44FmRc?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.4</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉิน จำแนกรายหน่วยปฏิบัติการ</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">สถิติการให้บริการการแพทย์ฉุกเฉิน จำแนกรายหน่วยปฏิบัติการ</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-2-5" href="https://reports-idems.fm-sp.com/public/dashboards/dnj2gdnszZDOMTONa2ZnlJjAwbQjpK5QfotzcmdY?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🚗</div>
-          <div class="ri-top">
-            <div class="ri-icon">🚗</div>
-            <div class="ri-badge">2.5</div>
+        <a class="list-item" id="link-2-5"
+          href="https://reports-idems.fm-sp.com/public/dashboards/dnj2gdnszZDOMTONa2ZnlJjAwbQjpK5QfotzcmdY?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.5</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการให้บริการการแพทย์ฉุกเฉินอุบัติเหตุทางถนนช่วงเทศกาล</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">สถิติการให้บริการการแพทย์ฉุกเฉินอุบัติเหตุทางถนนช่วงเทศกาล</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-2-6" href="https://reports-idems.fm-sp.com/public/dashboards/jERu1iINRSj6jSWkZNTvqEKROMdBHndPY7xPjJtg?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🚧</div>
-          <div class="ri-top">
-            <div class="ri-icon">🚧</div>
-            <div class="ri-badge">2.6</div>
+        <a class="list-item" id="link-2-6"
+          href="https://reports-idems.fm-sp.com/public/dashboards/jERu1iINRSj6jSWkZNTvqEKROMdBHndPY7xPjJtg?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.6</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการปฏิบัติการการแพทย์ฉุกเฉิน ช่วงสถานการณ์ชายแดนไทย-กัมพูชา</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">สถิติการปฏิบัติการการแพทย์ฉุกเฉิน ช่วงสถานการณ์ชายแดนไทย-กัมพูชา</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-2-7" href="https://reports-idems.fm-sp.com/public/dashboards/C2nS91V6ldgIaGM9Gjjcsj3LLWu9350kgfQP9ViP?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">📱</div>
-          <div class="ri-top">
-            <div class="ri-icon">📱</div>
-            <div class="ri-badge">2.7</div>
+        <a class="list-item" id="link-2-7"
+          href="https://reports-idems.fm-sp.com/public/dashboards/C2nS91V6ldgIaGM9Gjjcsj3LLWu9350kgfQP9ViP?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.7</div>
+          <div class="item-body">
+            <div class="item-title">สถิติการใช้งานฟังก์ชัน SMS เพื่อขอพิกัด และ Video Call</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">สถิติการใช้งานฟังก์ชัน SMS เพื่อขอพิกัด และ Video Call</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
-        <a class="report-item" id="link-2-8" href="https://reports-idems.fm-sp.com/public/dashboards/GCgHfJX3R1idb9W4X2FjczSRDFXCEex1gnseIJH1?org_slug=default" target="_blank" rel="noopener">
-          <div class="ri-bg-icon">🛣️</div>
-          <div class="ri-top">
-            <div class="ri-icon">🛣️</div>
-            <div class="ri-badge">2.8</div>
+        <a class="list-item" id="link-2-8"
+          href="https://reports-idems.fm-sp.com/public/dashboards/GCgHfJX3R1idb9W4X2FjczSRDFXCEex1gnseIJH1?org_slug=default"
+          target="_blank" rel="noopener">
+          <div class="item-num">2.8</div>
+          <div class="item-body">
+            <div class="item-title">รายงานการเข้าถึงบริการของผู้ป่วยอุบัติเหตุทางถนน (RTI)</div>
+            <span class="item-src">reports-idems.fm-sp.com</span>
           </div>
-          <div class="ri-title">รายงานการเข้าถึงบริการของผู้ป่วยอุบัติเหตุทางถนน (RTI)</div>
-          <div class="ri-bot">
-            <div class="ri-arrow">↗</div>
-            reports-idems.fm-sp.com
-          </div>
+          <span class="item-arrow">↗</span>
         </a>
 
       </div>
@@ -830,10 +592,10 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.report-item').forEach((el, index) => {
+    document.querySelectorAll('.list-item').forEach((el, index) => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(15px)';
-      el.style.transition = `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${(index % 10) * 0.05}s`;
+      el.style.transition = `all 0.4s ease-out ${(index % 12) * 0.05}s`;
       observer.observe(el);
     });
   </script>
