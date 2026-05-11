@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>NDEMS Report | ระบบรายงานการแพทย์ฉุกเฉิน</title>
+  <title>NDEMS Platfrom | ดิจิทัลแพลตฟอร์มกลางการแพทย์ฉุกเฉินแห่งชาติ</title>
   <meta name="description"
-    content="NDEMS Report — ศูนย์รวมลิงก์ระบบรายงานการแพทย์ฉุกเฉินแห่งชาติ สถาบันการแพทย์ฉุกเฉินแห่งชาติ (สพฉ.)" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231d4ed8'/%3E%3Crect x='13' y='10' width='38' height='44' rx='4' fill='%23ffffff'/%3E%3Crect x='13' y='10' width='38' height='44' rx='4' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Crect x='19' y='36' width='7' height='12' rx='2' fill='%231d4ed8'/%3E%3Crect x='29' y='28' width='7' height='20' rx='2' fill='%232563eb'/%3E%3Crect x='39' y='20' width='7' height='28' rx='2' fill='%23fbbf24'/%3E%3Crect x='19' y='50' width='27' height='2' rx='1' fill='%2393c5fd'/%3E%3Crect x='19' y='18' width='18' height='2.5' rx='1.2' fill='%23bfdbfe'/%3E%3Crect x='19' y='23' width='12' height='2.5' rx='1.2' fill='%23bfdbfe'/%3E%3C/svg%3E"/>
+    content="NDEMS Platfrom — ศูนย์รวมลิงก์ดิจิทัลแพลตฟอร์มกลางการแพทย์ฉุกเฉินแห่งชาติ สถาบันการแพทย์ฉุกเฉินแห่งชาติ (สพฉ.)" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231d4ed8'/%3E%3Crect x='13' y='10' width='38' height='44' rx='4' fill='%23ffffff'/%3E%3Crect x='13' y='10' width='38' height='44' rx='4' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Crect x='19' y='36' width='7' height='12' rx='2' fill='%231d4ed8'/%3E%3Crect x='29' y='28' width='7' height='20' rx='2' fill='%232563eb'/%3E%3Crect x='39' y='20' width='7' height='28' rx='2' fill='%23fbbf24'/%3E%3Crect x='19' y='50' width='27' height='2' rx='1' fill='%2393c5fd'/%3E%3Crect x='19' y='18' width='18' height='2.5' rx='1.2' fill='%23bfdbfe'/%3E%3Crect x='19' y='23' width='12' height='2.5' rx='1.2' fill='%23bfdbfe'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -75,7 +76,7 @@
     .hero {
       position: relative;
       z-index: 1;
-      max-width: 860px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 48px 24px 60px;
       display: flex;
@@ -160,9 +161,149 @@
 
     /* ── MAIN ── */
     main {
-      max-width: 860px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 36px 24px 80px;
+    }
+
+    .main-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .main-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── PORTAL CARD ── */
+    .portal-card {
+      --theme: var(--blue);
+      --theme-dk: var(--blue-dk);
+      --theme-lt: var(--blue-lt);
+      --theme-pale: var(--blue-pale);
+
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #ffffff, var(--theme-pale));
+      border: 2px solid var(--theme-lt);
+      border-radius: 16px;
+      padding: 32px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .portal-card.theme-green {
+      --theme: #059669;
+      --theme-dk: #064e3b;
+      --theme-lt: #34d399;
+      --theme-pale: #ecfdf5;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      border-color: var(--theme);
+    }
+
+    .portal-card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--theme) 0%, transparent 70%);
+      opacity: 0.15;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .pc-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--theme-dk), var(--theme));
+      color: #fff;
+      font-size: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .pc-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--theme-dk);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .pc-desc {
+      font-size: 14.5px;
+      color: var(--gray-600);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .pc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--theme);
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1px solid var(--theme-lt);
+      width: fit-content;
+      transition: all 0.2s;
+    }
+
+    .portal-card:hover .pc-link {
+      background: var(--theme);
+      color: #fff;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 56px 0 32px;
+    }
+
+    .divider:first-child {
+      margin-top: 8px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-300);
+    }
+
+    .divider span {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--gray-700);
+      letter-spacing: 0.5px;
+      background: var(--gray-200);
+      padding: 6px 18px;
+      border-radius: 100px;
     }
 
     /* ── SECTION ── */
@@ -383,8 +524,8 @@
         <img src="logo-200.png" alt="สพฉ." />
       </div>
       <div class="hero-body">
-        <div class="eyebrow"><span class="dot"></span>NDEMS Report</div>
-        <h1>ระบบรายงาน<span>การแพทย์ฉุกเฉินแห่งชาติ</span></h1>
+        <div class="eyebrow"><span class="dot"></span>NDEMS Platfrom</div>
+        <h1>ดิจิทัลแพลตฟอร์มกลาง<span>การแพทย์ฉุกเฉินแห่งชาติ</span></h1>
         <p class="hero-sub">สถาบันการแพทย์ฉุกเฉินแห่งชาติ (สพฉ.) · National Institute for Emergency Medicine</p>
       </div>
     </div>
@@ -394,6 +535,29 @@
 
   <!-- MAIN -->
   <main>
+
+    <div class="main-cards">
+      <!-- PORTAL CARD -->
+      <a href="https://emsportal-idems.niems.go.th" target="_blank" rel="noopener" class="portal-card">
+        <div class="pc-icon">💻</div>
+        <div class="pc-title">ดิจิทัลแพลตฟอร์มกลางการแพทย์ฉุกเฉิน<br>(NDEMS Portal)</div>
+        <div class="pc-desc">ระบบสารสนเทศและบริการดิจิทัลหลัก เข้าถึงข้อมูล บริหารจัดการ และปฏิบัติการได้ในที่เดียว
+        </div>
+        <div class="pc-link">เข้าสู่ระบบ <span style="font-size: 16px;">→</span></div>
+      </a>
+
+      <!-- REPORTS CARD -->
+      <a href="#reports-list" class="portal-card theme-green">
+        <div class="pc-icon">📊</div>
+        <div class="pc-title">ศูนย์รวมระบบรายงานการแพทย์ฉุกเฉิน<br>(NDEMS Reports)</div>
+        <div class="pc-desc">เข้าถึงข้อมูลทรัพยากรการแพทย์ฉุกเฉิน และสถิติผลการให้บริการการแพทย์ฉุกเฉินระดับประเทศ</div>
+        <div class="pc-link">ดูรายการระบบรายงาน <span>↓</span></div>
+      </a>
+    </div>
+
+    <div class="divider" id="reports-list">
+      <span>📋 รายการระบบรายงานทั้งหมด</span>
+    </div>
 
     <!-- SECTION 1 -->
     <section class="sec" id="s1">
@@ -539,28 +703,6 @@
           </div>
           <span class="item-arrow">↗</span>
         </a>
-
-      </div>
-    </section>
-
-    <!-- SECTION 3 -->
-    <section class="sec" id="s3">
-      <div class="sec-head">
-        <div class="sec-icon si-p">📋</div>
-        <div class="sec-meta">
-          <div class="sec-num">Section 03</div>
-          <h2>รายงานผลการดำเนินงานด้านการแพทย์ฉุกเฉิน</h2>
-        </div>
-      </div>
-      <div class="list">
-
-        <div class="list-item disabled" id="link-3-1">
-          <div class="item-num">3.1</div>
-          <div class="item-body">
-            <div class="item-title">รายงานผลการดำเนินงานตามตัวชี้วัดการแพทย์ฉุกเฉิน</div>
-          </div>
-          <span class="tag-soon">Coming Soon</span>
-        </div>
 
       </div>
     </section>
